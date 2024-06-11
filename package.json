@@ -14,6 +14,7 @@
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "@babel/polyfill": "^7.12.1",
+    "@modules/contact-us": "file:./modules/contact-us/",
     "@modules/faq": "file:./modules/faq",
     "@modules/privacy-policy": "file:./modules/privacy-policy",
     "@modules/profile": "file:./modules/profile",
