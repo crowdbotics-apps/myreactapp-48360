@@ -17,6 +17,7 @@
     "@modules/contact-us": "file:./modules/contact-us/",
     "@modules/faq": "file:./modules/faq",
     "@modules/login": "file:./modules/login/",
+    "@modules/onboarding": "file:./modules/onboarding/",
     "@modules/privacy-policy": "file:./modules/privacy-policy",
     "@modules/profile": "file:./modules/profile",
     "@modules/push-notifications": "file:./modules/push-notifications/",
