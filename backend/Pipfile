@@ -35,3 +35,4 @@ drf-spectacular = "~=0.26.4"
 dj-rest-auth = "==5.0.1"
 cb-profile = {editable = true, path = "./modules/profile"}
 cb-privacy-policy = {editable = true, path = "./modules/privacy_policy"}
+cb-terms-and-conditions = {editable = true, path = "./modules/terms_and_conditions"}
