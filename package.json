@@ -18,6 +18,7 @@
     "@modules/privacy-policy": "file:./modules/privacy-policy",
     "@modules/profile": "file:./modules/profile",
     "@modules/push-notifications": "file:./modules/push-notifications/",
+    "@modules/social-login": "file:./modules/social-login/",
     "@modules/terms-and-conditions": "file:./modules/terms-and-conditions",
     "@react-native-masked-view/masked-view": "^0.2.9",
     "@react-navigation/native": "^6.1.6",
