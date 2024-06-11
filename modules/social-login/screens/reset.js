@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react";
 import {
   Image,
   Alert,
@@ -6,40 +6,46 @@ import {
   TouchableOpacity,
   TextInput,
   Text
-} from "react-native"
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view"
-import { useSelector, useDispatch } from "react-redux"
-import { unwrapResult } from "@reduxjs/toolkit"
-import { styles, textInputStyles } from "./styles"
-import { validateEmail, LOGO_URL } from "./constants.js"
-import { resetPassword } from "../auth"
+} from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { useSelector, useDispatch } from "react-redux";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { validateEmail, LOGO_URL } from "../utils";
+import { resetPassword } from "../auth";
+import { OptionsContext } from "@options";
 
 const PasswordRecover = ({ navigation }) => {
-  const [email, setEmail] = useState("")
-  const { api } = useSelector(state => state.login)
-  const dispatch = useDispatch()
+  const options = useContext(OptionsContext);
+  const { styles } = options;
+  const [email, setEmail] = useState("");
+  // State for reset password Api errors
+  const [errorResponse, setErrorResponse] = useState([]);
 
+  // This variable fetches the loading and error status from the store
+  const { api } = useSelector(state => state.Login);
+  const dispatch = useDispatch();
+
+  // Error message will be displayed if user has not entered a valid email
   const handlePasswordReset = () => {
-    if (!validateEmail.test(email))
-      return Alert.alert("Error", "Please enter a valid email address.")
-
+    if (!validateEmail.test(email)) { return Alert.alert("Error", "Please enter a valid email address."); }
+    // This action dispatches the reset password api with email as params
     dispatch(resetPassword({ email }))
       .then(unwrapResult)
       .then(() => {
         Alert.alert(
           "Password Reset",
           "Password reset link has been sent to your email address"
-        )
-        navigation.goBack()
+        );
+        navigation.goBack();
       })
-      .catch(err => console.log(err.message))
-  }
+      .catch(err => { setErrorResponse(errorResponse => [...errorResponse, err]); });
+  };
 
   const renderImage = () => {
     const imageSize = {
       width: 365,
       height: 161
-    }
+    };
     return (
       <Image
         style={[styles.image, imageSize]}
@@ -47,8 +53,8 @@ const PasswordRecover = ({ navigation }) => {
           uri: LOGO_URL
         }}
       />
-    )
-  }
+    );
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -68,13 +74,6 @@ const PasswordRecover = ({ navigation }) => {
             autoCapitalize="none"
           />
         </View>
-        {!!api.error && (
-          <Text
-            style={[textInputStyles.error, { marginBottom: 10, fontSize: 12 }]}
-          >
-            {api.error.message}
-          </Text>
-        )}
         <TouchableOpacity
           disabled={api.loading === "pending"}
           activeOpacity={0.7}
@@ -90,17 +89,24 @@ const PasswordRecover = ({ navigation }) => {
             Reset Password
           </Text>
         </TouchableOpacity>
+        {
+        errorResponse.map((value, index) =>
+          <View key={index}>
+            <Text style={styles.error1}>{value[Object.keys(value)[index]].toString()}</Text>
+          </View>
+        )
+      }
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => {
-            navigation.goBack()
+            navigation.goBack();
           }}
         >
           <Text style={[styles.textRow]}>Back to login?</Text>
         </TouchableOpacity>
       </KeyboardAwareScrollView>
     </View>
-  )
-}
+  );
+};
 
-export default PasswordRecover
+export default PasswordRecover;
