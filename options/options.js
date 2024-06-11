@@ -1,10 +1,11 @@
 export const globalOptions = {
-  name: "myreactapp-48360",
-  url: "https://myreactapp-48360.botics.co",
-  api: "https://myreactapp-48360.botics.co/api/v1",
-  screenOptions: {
-    headerShown: false
-  }
+  "name": "myreactapp-48360",
+  "url": "https://myreactapp-48360.botics.co",
+  "api": "https://myreactapp-48360.botics.co/api/v1",
+  "screenOptions": {
+    "headerShown": false
+  },
+  "initialRoute": "welcome"
 };
 export const modulesOptions = {
   "@modules/app-menu": {

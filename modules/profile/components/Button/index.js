@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Pressable, Text, View } from "react-native";
 import { OptionsContext } from "@options";
-
 /**
  * Custom button component
  * @param {Object} params - The button component props
@@ -15,9 +14,12 @@ import { OptionsContext } from "@options";
  * @param {React.ReactNode} params.children - Any extra components to render with the button
  * @returns {React.ReactNode} - The button component
  */
-const Button = (params) => {
+
+const Button = params => {
   const options = useContext(OptionsContext);
-  const { styles } = options;
+  const {
+    styles
+  } = options;
   const {
     color,
     textColor,
@@ -27,36 +29,34 @@ const Button = (params) => {
     onPress,
     buttonText,
     children
-  } = params;
+  } = params; // Determine the background color and text color based on the provided props
 
-  // Determine the background color and text color based on the provided props
   const backgroundColor = color || "#000";
-  const buttonTextColor = textColor || "#fff";
+  const buttonTextColor = textColor || "#fff"; // Create the style object for the button based on the outline prop
 
-  // Create the style object for the button based on the outline prop
   const btnStyle = {
     backgroundColor: outline ? "#fff" : backgroundColor,
     borderColor: outline ? backgroundColor : null,
     borderWidth: outline ? 1 : 0
-  };
+  }; // Create the style object for the button text based on the outline prop
 
-  // Create the style object for the button text based on the outline prop
   const btnText = {
     color: outline ? "#000" : buttonTextColor
   };
-
-  return (
-    <View style={styles.btnContainer}>
-      {/* Apply shadow to the button if hideShadow prop is not true */}
+  return <View style={styles.btnContainer}>
+      {
+      /* Apply shadow to the button if hideShadow prop is not true */
+    }
       <View style={!hideShadow ? styles.shadowContainer : null}>
         <Pressable style={[styles.btn, btnStyle, style]} onPress={onPress}>
           <Text style={[styles.btnText, btnText]}>{buttonText}</Text>
-          {/* Render any additional components provided as children */}
+          {
+          /* Render any additional components provided as children */
+        }
           <View style={styles.childrenContainer}>{children}</View>
         </Pressable>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 export default Button;

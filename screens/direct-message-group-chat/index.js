@@ -2,29 +2,19 @@ import React from "react";
 import { Image, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
 const DirectMessageForGroupChat = () => {
-  return (
-
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <ScrollView>
       <View style={styles.chatHeader}>
           <View style={styles.groupName}>
-            <Image source={require(
-
-              "./assets/back.png")}/>
+            <Image source={require("./assets/back.png")} />
             <View style={styles.logoContainer}>
-            <Image source={require(
-
-              "./assets/logo.png")}/>
+            <Image source={require("./assets/logo.png")} />
             </View>
             <Text style={styles.headerName}>Group name</Text>
           </View>
           <View style={styles.icons}>
-            <Image source={require(
-
-              "./assets/call.png")}/>
-              <Image style={styles.cameraIcon} source={require(
-
-                "./assets/camera.png")}/>
+            <Image source={require("./assets/call.png")} />
+              <Image style={styles.cameraIcon} source={require("./assets/camera.png")} />
           </View>
       </View>
       <View style={styles.mt30}>
@@ -36,23 +26,15 @@ const DirectMessageForGroupChat = () => {
             <Text style={styles.timeText}>01:15 PM</Text>
           </View>
           <View style={styles.userBox}>
-            <Image style={styles.logoChatIcon} source={require(
-
-              "./assets/logo.png")}/>
-            <Image style={styles.onlineIcon} source={require(
-
-              "./assets/Oval.png")}/>
+            <Image style={styles.logoChatIcon} source={require("./assets/logo.png")} />
+            <Image style={styles.onlineIcon} source={require("./assets/Oval.png")} />
           </View>
       </View>
       </View>
       <View style={styles.receiveMessage}>
           <View style={styles.userBoxGray}>
-            <Image style={styles.logoChatIcon} source={require(
-
-              "./assets/logo.png")}/>
-            <Image style={styles.onlineIcon} source={require(
-
-              "./assets/Oval.png")}/>
+            <Image style={styles.logoChatIcon} source={require("./assets/logo.png")} />
+            <Image style={styles.onlineIcon} source={require("./assets/Oval.png")} />
           </View>
         <View style={styles.messageBox}>
           <View style={styles.receiveMessageBox}>
@@ -69,12 +51,8 @@ const DirectMessageForGroupChat = () => {
             <Text style={styles.timeText}>01:15 PM</Text>
           </View>
           <View style={styles.userBox}>
-            <Image style={styles.logoChatIcon} source={require(
-
-              "./assets/logo.png")}/>
-            <Image style={styles.onlineIcon} source={require(
-
-              "./assets/Oval.png")}/>
+            <Image style={styles.logoChatIcon} source={require("./assets/logo.png")} />
+            <Image style={styles.onlineIcon} source={require("./assets/Oval.png")} />
           </View>
       </View>
       <View style={styles.sendMessage}>
@@ -85,22 +63,14 @@ const DirectMessageForGroupChat = () => {
             <Text style={styles.timeText}>01:15 PM</Text>
           </View>
           <View style={styles.userBox}>
-            <Image style={styles.logoChatIcon} source={require(
-
-              "./assets/logo.png")}/>
-            <Image style={styles.onlineIcon} source={require(
-
-              "./assets/Oval.png")}/>
+            <Image style={styles.logoChatIcon} source={require("./assets/logo.png")} />
+            <Image style={styles.onlineIcon} source={require("./assets/Oval.png")} />
           </View>
       </View>
       <View style={styles.receiveMessage}>
           <View style={styles.userBoxGray}>
-            <Image style={styles.logoChatIcon} source={require(
-
-              "./assets/logo.png")}/>
-            <Image style={styles.onlineIcon} source={require(
-
-              "./assets/Oval.png")}/>
+            <Image style={styles.logoChatIcon} source={require("./assets/logo.png")} />
+            <Image style={styles.onlineIcon} source={require("./assets/Oval.png")} />
           </View>
         <View style={styles.messageBox}>
           <View style={styles.receiveMessageBox}>
@@ -112,27 +82,18 @@ const DirectMessageForGroupChat = () => {
 
       <View style={styles.chatSection}>
           <View style={styles.center}>
-            <Image source={require(
-
-              "./assets/cam.png")}/>
+            <Image source={require("./assets/cam.png")} />
             <View style={styles.circle}></View>
           </View>
           <View style={styles.inputIcons}>
-            <Input placeholder="Enter"/>
-            <Image style={styles.smileyIcon} source={require(
-
-              "./assets/smiley.png")}/>
-            <Image source={require(
-
-              "./assets/mic.png")}/>
+            <Input placeholder="Enter" />
+            <Image style={styles.smileyIcon} source={require("./assets/smiley.png")} />
+            <Image source={require("./assets/mic.png")} />
           </View>
-          <Image style={styles.sendIcon} source={require(
-
-            "./assets/send.png")}/>
+          <Image style={styles.sendIcon} source={require("./assets/send.png")} />
       </View>
       </ScrollView>
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -299,20 +260,11 @@ const styles = StyleSheet.create({
   }
 });
 
-const Input = (props) => {
-  return (
-    <View>
-      <TextInput
-        style={textStyles.input}
-        placeholder={props.placeholder}
-        value={props.value}
-        onChangeText={(num) => props.setValue(num)}
-        placeholderTextColor='#000000'
-        editable={props.editable !== false}
-      />
+const Input = props => {
+  return <View>
+      <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={num => props.setValue(num)} placeholderTextColor='#000000' editable={props.editable !== false} />
       {props.errorText ? <Text style={textStyles.error}>{props.errorText}</Text> : null}
-    </View>
-  );
+    </View>;
 };
 
 const textStyles = StyleSheet.create({
@@ -331,5 +283,4 @@ const textStyles = StyleSheet.create({
     paddingTop: 8
   }
 });
-
 export default DirectMessageForGroupChat;

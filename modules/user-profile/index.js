@@ -7,10 +7,17 @@ import PropTypes from "prop-types";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { EditUser } from "./edit";
 import ViewUser from "./view";
+export const UserProfile = ({
+  route,
+  textInputStyle = {},
+  buttonStyle = {},
+  buttonTextStyle = {},
+  avatarStyle = {},
+  editContainerStyle = {},
+  userInfoContainerStyle = {}
+}) => {
+  const [isEdit, setIsEdit] = useState(false); // code below depends on the existence of any login module - update as needed.
 
-export const UserProfile = ({ route, textInputStyle = {}, buttonStyle = {}, buttonTextStyle = {}, avatarStyle = {}, editContainerStyle = {}, userInfoContainerStyle = {} }) => {
-  const [isEdit, setIsEdit] = useState(false);
-  // code below depends on the existence of any login module - update as needed.
   const login = useSelector(state => {
     return state?.login;
   });
@@ -18,39 +25,23 @@ export const UserProfile = ({ route, textInputStyle = {}, buttonStyle = {}, butt
   const user = useSelector(state => state.userProfile.users[userId]);
   const api = useSelector(state => state.userProfile.api);
   const dispatch = useDispatch();
-
   useEffect(async () => {
     if (userId) {
-      dispatch(getUserById(userId))
-        .then(unwrapResult)
-        .then(response => {
-          const edit = response.id === login?.user.id;
-          setIsEdit(edit);
-        })
-        .catch(e => console.log(e));
+      dispatch(getUserById(userId)).then(unwrapResult).then(response => {
+        const edit = response.id === login?.user.id;
+        setIsEdit(edit);
+      }).catch(e => console.log(e));
     }
   }, [userId]);
-
-  return (
-    <ScrollView style={styles.container} contentStyle={styles.content}>
-      {api.loading === "pending"
-        ? (
-          <Loader color={Color.steel} />
-          )
-        : (
-          <View>
+  return <ScrollView style={styles.container} contentStyle={styles.content}>
+      {api.loading === "pending" ? <Loader color={Color.steel} /> : <View>
             <View>{!user && <Text>No user to display information.</Text>}</View>
-            {user && (
-              <View>
+            {user && <View>
                 {isEdit ? <EditUser user={user} textInputStyle={textInputStyle} buttonStyle={buttonStyle} buttonTextStyle={buttonTextStyle} avatarStyle={avatarStyle} editContainerStyle={editContainerStyle} /> : <ViewUser user={user} userInfoContainerStyle={userInfoContainerStyle} avatarStyle={avatarStyle} />}
-              </View>
-            )}
-          </View>
-          )}
-    </ScrollView>
-  );
+              </View>}
+          </View>}
+    </ScrollView>;
 };
-
 UserProfile.propTypes = {
   avatarStyle: PropTypes.object,
   editContainerStyle: PropTypes.object,
@@ -59,22 +50,22 @@ UserProfile.propTypes = {
   buttonStyle: PropTypes.object,
   buttonTextStyle: PropTypes.object
 };
-
 export default {
   title: "userProfile",
   navigator: UserProfile,
   slice
 };
 
-const Loader = ({ color }) => {
-  return (
-    <View style={loaderStyles.container}>
+const Loader = ({
+  color
+}) => {
+  return <View style={loaderStyles.container}>
       <View style={loaderStyles.loaderContainer}>
         <ActivityIndicator color={color} />
       </View>
-    </View>
-  );
+    </View>;
 };
+
 const loaderStyles = StyleSheet.create({
   container: {
     width: "100%",

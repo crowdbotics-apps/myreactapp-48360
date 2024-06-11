@@ -4,11 +4,16 @@ import { useDispatch } from "react-redux";
 import { Images } from "./assets";
 import { OptionsContext } from "@options";
 import { slice } from "./store";
-
-export const FAQItem = (props) => {
+export const FAQItem = props => {
   const options = useContext(OptionsContext);
-  const { question, answer, isExpanded, prefixQuestion, prefixAnswer, id } =
-    props;
+  const {
+    question,
+    answer,
+    isExpanded,
+    prefixQuestion,
+    prefixAnswer,
+    id
+  } = props;
   const dispatch = useDispatch();
 
   const _onClick = () => {
@@ -16,7 +21,10 @@ export const FAQItem = (props) => {
   };
 
   const styles = StyleSheet.create({
-    container: { marginTop: 20, paddingHorizontal: 20 },
+    container: {
+      marginTop: 20,
+      paddingHorizontal: 20
+    },
     questionContainer: {
       flexDirection: "row",
       justifyContent: "space-between"
@@ -34,35 +42,31 @@ export const FAQItem = (props) => {
       color: options.colors.ivoryBlack,
       marginBottom: 20
     },
-    icon: { width: 14, height: 20, marginTop: 5 }
+    icon: {
+      width: 14,
+      height: 20,
+      marginTop: 5
+    }
   });
-
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <TouchableOpacity style={styles.questionContainer} onPress={_onClick}>
-        <Text
-          style={[styles.questionText, { marginBottom: !isExpanded ? 20 : 5 }]}
-        >
+        <Text style={[styles.questionText, {
+        marginBottom: !isExpanded ? 20 : 5
+      }]}>
           <Text>{`${prefixQuestion} `}</Text>
           {`${question}`}
         </Text>
-        <Image
-          style={styles.icon}
-          source={isExpanded ? Images.expandedIcon : Images.collapsedIcon}
-          resizeMode="contain"
-        />
+        <Image style={styles.icon} source={isExpanded ? Images.expandedIcon : Images.collapsedIcon} resizeMode="contain" />
       </TouchableOpacity>
-      {isExpanded && (
-        <Text style={styles.answerText}>
-          <Text
-            style={[
-              styles.questionText,
-              { lineHeight: styles.answerText.lineHeight }
-            ]}
-          >{`${prefixAnswer} `}</Text>
+      {isExpanded && <Text style={styles.answerText}>
+          <Text style={[styles.questionText, _styles.ptlohcrf]}>{`${prefixAnswer} `}</Text>
           {`${answer}`}
-        </Text>
-      )}
-    </View>
-  );
+        </Text>}
+    </View>;
 };
+
+const _styles = StyleSheet.create({
+  ptlohcrf: {
+    lineHeight: "styles.answerText.lineHeight"
+  }
+});

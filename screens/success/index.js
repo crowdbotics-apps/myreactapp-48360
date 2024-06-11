@@ -2,23 +2,19 @@ import React from "react";
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 
 const Success = () => {
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <View style={styles.upper}>
         <View style={styles.iconContainer}>
-          <Image
-            source={require("./assets/successIcon.png")}
-            style={styles.icon}
-          />
+          <Image source={require("./assets/successIcon.png")} style={styles.icon} />
         </View>
       </View>
       <View style={styles.lower}>
         <Text style={styles.heading}>Successfully{"\n"}added/saved</Text>
         <Button buttonText="Close" style={styles.button} />
       </View>
-    </View>
-  );
+    </View>;
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -59,7 +55,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 40
   }
 });
-
 export default Success;
 
 const Button = params => {
@@ -73,20 +68,16 @@ const Button = params => {
   const btnText = {
     color: textColor
   };
-  return (
-    <View style={[buttonStyles.btnContainer, params.style]}>
+  return <View style={[buttonStyles.btnContainer, params.style]}>
       <View style={!params.hideShadow ? buttonStyles.shadowContainer : null}>
-        <Pressable
-          style={[buttonStyles.btn, btnStyle]}
-          onPress={params.onPress}>
+        <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
           <Text style={[buttonStyles.btnText, btnText]}>
             {params.buttonText}
           </Text>
           <View style={styles.childrenContainer}>{params.children}</View>
         </Pressable>
       </View>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({
@@ -112,7 +103,6 @@ const buttonStyles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
-
     flexDirection: "row"
   },
   btnText: {

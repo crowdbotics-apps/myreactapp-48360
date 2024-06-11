@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
@@ -95,7 +94,9 @@ const styles = StyleSheet.create({
     height: 20,
     resizeMode: "contain"
   },
-  error: { color: "#FF5733" },
+  error: {
+    color: "#FF5733"
+  },
   container: {
     width: "100%",
     height: "100%",
@@ -191,11 +192,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   }
-});
+}); // API authentication token
 
-// API authentication token
 const ACCESS_TOKEN = "";
-
 export default {
   styles: styles,
   ACCESS_TOKEN: ACCESS_TOKEN

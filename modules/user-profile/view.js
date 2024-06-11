@@ -4,45 +4,33 @@ import { Avatar } from "react-native-elements";
 import { Color, styles } from "./styles";
 import { getInitials, transformLabel } from "./utils";
 
-const UserInfo = props => (
-  <View>
+const UserInfo = props => <View>
     <Text style={styles.label}>{transformLabel(props.label)}</Text>
     <Text style={styles.text}>
       {props.value ? props.value : "Not available"}
     </Text>
-  </View>
-);
+  </View>;
 
 const ViewUser = props => {
-  const { user } = props;
+  const {
+    user
+  } = props;
   const initials = getInitials(user);
-  return (
-    <View>
-      {user.id
-        ? (
-        <View style={props.userInfoContainerStyle}>
+  return <View>
+      {user.id ? <View style={props.userInfoContainerStyle}>
           <View style={styles.profileIcon}>
-            <Avatar
-              size="large"
-              rounded
-              icon={{ name: "user", type: "font-awesome" }}
-              title={initials}
-              containerStyle={[{ backgroundColor: Color.pink }, props.avatarStyle]}
-            />
+            <Avatar size="large" rounded icon={{
+          name: "user",
+          type: "font-awesome"
+        }} title={initials} containerStyle={[{
+          backgroundColor: Color.pink
+        }, props.avatarStyle]} />
           </View>
-          <UserInfo
-            label="Name"
-            value={`${user.first_name} ${user.last_name}`}
-          />
+          <UserInfo label="Name" value={`${user.first_name} ${user.last_name}`} />
           <UserInfo label="Email" value={user.email} />
           <UserInfo label="Biography" value={user.bio} />
-        </View>
-          )
-        : (
-        <Text style={styles.label}>No user information available.</Text>
-          )}
-    </View>
-  );
+        </View> : <Text style={styles.label}>No user information available.</Text>}
+    </View>;
 };
 
 export default ViewUser;

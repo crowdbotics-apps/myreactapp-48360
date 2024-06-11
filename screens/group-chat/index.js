@@ -1,25 +1,18 @@
 import React from "react";
 import { Text, StyleSheet, View, Image, ScrollView, TextInput } from "react-native";
 
-const GroupChatScreen = (params) => {
-  return (
-    <ScrollView style={styles.container}>
+const GroupChatScreen = params => {
+  return <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Image source={require(
-
-          "./assets/back.png")} style={styles.back} />
+        <Image source={require("./assets/back.png")} style={styles.back} />
         <Text style={styles.heading}>Group chat</Text>
         <Text style={styles.saveText}>Save</Text>
       </View>
       <View style={styles.centerSection}>
         <View style={styles.imgContainer2}>
-          <Image source={require(
-
-            "./assets/edit.png")} style={styles.editImg} />
+          <Image source={require("./assets/edit.png")} style={styles.editImg} />
         </View>
-        <Image source={require(
-
-          "./assets/plus.png")} style={styles.heartImg} />
+        <Image source={require("./assets/plus.png")} style={styles.heartImg} />
       </View>
       <View style={styles.tabView}>
         <View style={styles.tabItem}>
@@ -44,9 +37,7 @@ const GroupChatScreen = (params) => {
       <Text style={styles.mr10}>Add / Remove</Text>
       <View style={styles.chooseContainer}>
         <TextInput placeholder="Enter" placeholderTextColor={"#000"}></TextInput>
-        <Image source={require(
-
-          "./assets/search.png")} style={styles.filterImg} />
+        <Image source={require("./assets/search.png")} style={styles.filterImg} />
       </View>
       <View style={styles.walletCard}>
         <View style={styles.walletInner}>
@@ -59,9 +50,7 @@ const GroupChatScreen = (params) => {
           </View>
         </View>
         <View style={styles.leftSection}>
-        <Image source={require(
-
-          "./assets/box.png")} style={styles.dotsImg} />
+        <Image source={require("./assets/box.png")} style={styles.dotsImg} />
         </View>
       </View>
       <View style={styles.walletCard}>
@@ -75,9 +64,7 @@ const GroupChatScreen = (params) => {
           </View>
         </View>
         <View style={styles.leftSection}>
-        <Image source={require(
-
-          "./assets/checkbox.png")} style={styles.dotsImg} />
+        <Image source={require("./assets/checkbox.png")} style={styles.dotsImg} />
         </View>
       </View>
       <View style={styles.walletCard}>
@@ -91,13 +78,10 @@ const GroupChatScreen = (params) => {
           </View>
         </View>
         <View style={styles.leftSection}>
-        <Image source={require(
-
-          "./assets/box.png")} style={styles.dotsImg} />
+        <Image source={require("./assets/box.png")} style={styles.dotsImg} />
         </View>
       </View>
-    </ScrollView>
-  );
+    </ScrollView>;
 };
 
 const styles = StyleSheet.create({
@@ -115,14 +99,30 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 30
   },
-  back: { width: 11.25, height: 20, resizeMode: "contain", marginLeft: -15 },
-  heading: { fontSize: 16, color: "#000", marginLeft: 15 },
+  back: {
+    width: 11.25,
+    height: 20,
+    resizeMode: "contain",
+    marginLeft: -15
+  },
+  heading: {
+    fontSize: 16,
+    color: "#000",
+    marginLeft: 15
+  },
   mr10: {
     marginLeft: 25,
     marginBottom: 10
   },
-  saveText: { textDecorationLine: "underline", fontSize: 16, marginRight: -10 },
-  centerSection: { justifyContent: "center", alignItems: "center" },
+  saveText: {
+    textDecorationLine: "underline",
+    fontSize: 16,
+    marginRight: -10
+  },
+  centerSection: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
   imgContainer2: {
     height: 98,
     width: 97,
@@ -131,8 +131,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#DADADA",
     borderRadius: 60
   },
-  editImg: { resizeMode: "contain", height: 32, width: 32 },
-  heartImg: { resizeMode: "contain", height: 17, width: 17, marginTop: -10, marginLeft: 70 },
+  editImg: {
+    resizeMode: "contain",
+    height: 32,
+    width: 32
+  },
+  heartImg: {
+    resizeMode: "contain",
+    height: 17,
+    width: 17,
+    marginTop: -10,
+    marginLeft: 70
+  },
   tabView: {
     height: 48,
     backgroundColor: "#F1F1F1",
@@ -161,9 +171,27 @@ const styles = StyleSheet.create({
     color: "#000",
     paddingHorizontal: 15
   },
-  tabText: { fontSize: 12, color: "#7C7C7C" },
-  InputBox: { paddingHorizontal: 10, borderColor: "#C4C4C4", borderWidth: 1, marginHorizontal: 5, borderRadius: 10, marginBottom: 10 },
-  textInput: { borderWidth: 1, borderRadius: 10, borderColor: "#C4C4C4", paddingHorizontal: 5, height: 140, marginHorizontal: 5, marginBottom: 10 },
+  tabText: {
+    fontSize: 12,
+    color: "#7C7C7C"
+  },
+  InputBox: {
+    paddingHorizontal: 10,
+    borderColor: "#C4C4C4",
+    borderWidth: 1,
+    marginHorizontal: 5,
+    borderRadius: 10,
+    marginBottom: 10
+  },
+  textInput: {
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "#C4C4C4",
+    paddingHorizontal: 5,
+    height: 140,
+    marginHorizontal: 5,
+    marginBottom: 10
+  },
   chooseContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -210,8 +238,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     width: 115
   },
-
-  leftSection: { justifyContent: "center", alignItems: "center", paddingRight: 10 },
+  leftSection: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingRight: 10
+  },
   imgContainer: {
     height: 61,
     width: 61,
@@ -220,27 +251,25 @@ const styles = StyleSheet.create({
     backgroundColor: "#DADADA",
     borderRadius: 30
   },
-  editImage: { resizeMode: "contain", height: 32, width: 32 },
-  dotsImg: { resizeMode: "contain", height: 18, width: 18 },
-  backColor: { backgroundColor: "#FCF1D6" }
+  editImage: {
+    resizeMode: "contain",
+    height: 32,
+    width: 32
+  },
+  dotsImg: {
+    resizeMode: "contain",
+    height: 18,
+    width: 18
+  },
+  backColor: {
+    backgroundColor: "#FCF1D6"
+  }
 });
 
-const Input = (props) => {
-  return (
-    <View style={styles.container}>
-      <TextInput
-        style={inputStyles.input}
-        placeholder={props.placeholder}
-        value={props.value}
-        onChangeText={(num) => props.setValue(num)}
-        placeholderTextColor='#000'
-        multiline={props.multiline}
-        numberOfLines={props.multiline ? 10 : null}
-        editable={props.editable !== false}
-        borderWidth={props.borderWidth}
-      />
-    </View>
-  );
+const Input = props => {
+  return <View style={styles.container}>
+      <TextInput style={inputStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={num => props.setValue(num)} placeholderTextColor='#000' multiline={props.multiline} numberOfLines={props.multiline ? 10 : null} editable={props.editable !== false} borderWidth={props.borderWidth} />
+    </View>;
 };
 
 const inputStyles = StyleSheet.create({
@@ -257,7 +286,5 @@ const inputStyles = StyleSheet.create({
     borderRadius: 10,
     fontSize: 14
   }
-
 });
-
 export default GroupChatScreen;

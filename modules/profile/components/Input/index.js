@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Image, Text, TextInput, View } from "react-native";
 import { OptionsContext } from "@options";
-
 /**
  * Custom Text Input Component
  * @param {Object} props - The input component props
@@ -19,7 +18,8 @@ import { OptionsContext } from "@options";
  * @param {React.ReactNode} props.children - Components to render beside the input
  * @returns {React.ReactNode} - The input component
  */
-const Input = (props) => {
+
+const Input = props => {
   const {
     containerStyle,
     text,
@@ -33,47 +33,38 @@ const Input = (props) => {
     errorText,
     icon,
     children
-  } = props;
+  } = props; // Accessing the styles from the OptionsContext
 
-  // Accessing the styles from the OptionsContext
   const options = useContext(OptionsContext);
-  const { styles } = options;
-
-  return (
-    <View style={[styles.inputContainer, containerStyle]}>
-      {/* Render the label if provided */}
+  const {
+    styles
+  } = options;
+  return <View style={[styles.inputContainer, containerStyle]}>
+      {
+      /* Render the label if provided */
+    }
       {text ? <Text style={styles.inputText}>{text}</Text> : null}
 
-      {/* The main TextInput component */}
-      <TextInput
-        style={[styles.input, style, textArea ? styles.textArea : null]}
-        placeholder={placeholder || "Enter"}
-        value={value}
-        onChangeText={onChange}
-        placeholderTextColor={placeholderTextColor || "#9B9B9B"}
-        editable={editable !== false}
-        autoCapitalize="none"
-        autoCorrect={false}
-        multiline={!!textArea}
-      />
+      {
+      /* The main TextInput component */
+    }
+      <TextInput style={[styles.input, style, textArea ? styles.textArea : null]} placeholder={placeholder || "Enter"} value={value} onChangeText={onChange} placeholderTextColor={placeholderTextColor || "#9B9B9B"} editable={editable !== false} autoCapitalize="none" autoCorrect={false} multiline={!!textArea} />
 
-      {/* Display the error message if provided */}
+      {
+      /* Display the error message if provided */
+    }
       {errorText ? <Text style={styles.error}>{errorText}</Text> : null}
 
-      {/* Display an icon if provided */}
-      {icon
-        ? (
-        <Image
-          source={icon}
-          style={text ? styles.iconWithText : styles.iconWithoutText}
-        />
-          )
-        : null}
+      {
+      /* Display an icon if provided */
+    }
+      {icon ? <Image source={icon} style={text ? styles.iconWithText : styles.iconWithoutText} /> : null}
 
-      {/* Render any additional components provided as children */}
+      {
+      /* Render any additional components provided as children */
+    }
       <View style={styles.children}>{children}</View>
-    </View>
-  );
+    </View>;
 };
 
 export default Input;

@@ -1,9 +1,8 @@
 import React from "react";
 import { Text, StyleSheet, View, Image, Pressable } from "react-native";
 
-const UploadMediaScreen = (params) => {
-  return (
-    <View style={styles.container}>
+const UploadMediaScreen = params => {
+  return <View style={styles.container}>
       <View style={styles.menu}>
         <View style={styles.menuItem}>
           <Text style={styles.menuItemText}>Take photo or video</Text>
@@ -19,8 +18,7 @@ const UploadMediaScreen = (params) => {
         </View>
       </View>
       <Button buttonText="Cancel" outline={true} />
-    </View>
-  );
+    </View>;
 };
 
 const styles = StyleSheet.create({
@@ -48,7 +46,7 @@ const styles = StyleSheet.create({
 });
 export default UploadMediaScreen;
 
-const Button = (params) => {
+const Button = params => {
   const btnStyle = {
     backgroundColor: params.outline ? "#fff" : "#000",
     borderColor: params.outline ? "#000" : "#fff",
@@ -57,14 +55,12 @@ const Button = (params) => {
   const btnText = {
     color: params.outline ? "#000" : "#fff"
   };
-  return (
-    <View style={buttonStyles.btnContainer}>
+  return <View style={buttonStyles.btnContainer}>
       <Pressable style={[buttonStyles.btn, btnStyle]} onPress={params.onPress}>
         <Text style={[buttonStyles.btnText, btnText]}>{params.buttonText}</Text>
         <View style={styles.childrenContainer}>{params.children}</View>
       </Pressable>
-    </View>
-  );
+    </View>;
 };
 
 const buttonStyles = StyleSheet.create({

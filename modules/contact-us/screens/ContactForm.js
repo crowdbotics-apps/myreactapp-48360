@@ -24,17 +24,18 @@ const ContactForm = () => {
       setEmailValidations("Please provide correct email address");
       return;
     }
+
     if (message === "") {
       setMessageValidations("Please enter a message");
       return;
     }
 
     setIsLoading(true);
-    await sendQuery({ email, message, name })
-      .then((res) => res.json())
-      .then((res) => showToastWithGravity(res.message))
-      .catch((error) => showToastWithGravity(error.message));
-
+    await sendQuery({
+      email,
+      message,
+      name
+    }).then(res => res.json()).then(res => showToastWithGravity(res.message)).catch(error => showToastWithGravity(error.message));
     setName("");
     setEmail("");
     setMessage("");
@@ -42,21 +43,15 @@ const ContactForm = () => {
     setEmailValidations("");
     setIsLoading(false);
   };
-  const showToastWithGravity = (message) => {
-    ToastAndroid.showWithGravityAndOffset(
-      message,
-      ToastAndroid.SHORT,
-      ToastAndroid.BOTTOM,
-      25,
-      50
-    );
+
+  const showToastWithGravity = message => {
+    ToastAndroid.showWithGravityAndOffset(message, ToastAndroid.SHORT, ToastAndroid.BOTTOM, 25, 50);
   };
 
-  return (
-    <SafeAreaView>
+  return <SafeAreaView>
       <ScrollView>
         {isLoading && <Loader />}
-        <View style={{ padding: 20 }}>
+        <View style={styles.CERkTcKN}>
           <View>
             <Text style={styles.text}>Name</Text>
             <View style={styles.textInput}>
@@ -69,12 +64,12 @@ const ContactForm = () => {
             <View style={styles.textInput}>
               <Input placeholder='Email' setValue={setEmail} value={email} />
             </View>
-            {emailValidations !== "" && <Text style={styles.validations} >{emailValidations}</Text>}
+            {emailValidations !== "" && <Text style={styles.validations}>{emailValidations}</Text>}
 
           </View>
           <View style={styles.pt14}>
             <Text style={styles.text}>Message</Text>
-            <View style={[styles.textInput, { height: 150 }]}>
+            <View style={[styles.textInput, styles.DCiCRHDE]}>
               <Input placeholder='Message' setValue={setMessage} value={message} multiline={true} />
             </View>
             {messageValidations !== "" && <Text style={styles.validations}>{messageValidations}</Text>}
@@ -90,20 +85,51 @@ const ContactForm = () => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </SafeAreaView>
-
-  );
+    </SafeAreaView>;
 };
 
 const styles = StyleSheet.create({
-  text: { paddingLeft: 10, paddingBottom: 10 },
-  textInput: { borderWidth: 0.5, borderRadius: 10, borderColor: "#C4C4C4", paddingVertical: 3 },
-  pt14: { paddingTop: 14 },
-  button: { paddingHorizontal: 20, marginTop: 40, height: 50 },
-  or: { display: "flex", justifyContent: "center", alignItems: "center", marginVertical: 20 },
-  link: { display: "flex", justifyContent: "center", alignItems: "center" },
-  linkText: { textDecorationLine: "underline", color: "#0000ee" },
-  validations: { color: "red" }
-
+  text: {
+    paddingLeft: 10,
+    paddingBottom: 10
+  },
+  textInput: {
+    borderWidth: 0.5,
+    borderRadius: 10,
+    borderColor: "#C4C4C4",
+    paddingVertical: 3
+  },
+  pt14: {
+    paddingTop: 14
+  },
+  button: {
+    paddingHorizontal: 20,
+    marginTop: 40,
+    height: 50
+  },
+  or: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 20
+  },
+  link: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  linkText: {
+    textDecorationLine: "underline",
+    color: "#0000ee"
+  },
+  validations: {
+    color: "red"
+  },
+  CERkTcKN: {
+    padding: 20
+  },
+  DCiCRHDE: {
+    height: 150
+  }
 });
 export default ContactForm;

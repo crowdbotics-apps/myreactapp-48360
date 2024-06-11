@@ -1,4 +1,3 @@
-
 import create from "zustand";
 import options from "../options";
 export const uuid = options.user._id;
@@ -7,8 +6,7 @@ export const ChannelType = {
   Direct: 0,
   Group: 1
 };
-
-export const useStore = create((setState) => ({
+export const useStore = create(setState => ({
   state: {
     channels: {},
     messages: {},
@@ -16,6 +14,9 @@ export const useStore = create((setState) => ({
     contacts: [options.user, ...options.users],
     user
   },
-  dispatch: (newState) =>
-    setState((oldState) => ({ state: { ...oldState.state, ...newState } }))
+  dispatch: newState => setState(oldState => ({
+    state: { ...oldState.state,
+      ...newState
+    }
+  }))
 }));

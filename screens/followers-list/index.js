@@ -1,17 +1,16 @@
 import React from "react";
 import { Text, StyleSheet, View, TextInput, Image, ScrollView } from "react-native";
 
-const FollowersList = (params) => {
-  return (
-    <ScrollView>
+const FollowersList = params => {
+  return <ScrollView>
       <View style={styles.container}>
         <View style={styles.searchBar}>
           <Text style={styles.searchText}>Search</Text>
-          <View style={{ borderWidth: 1, borderRadius: 10, borderColor: "#C4C4C4", flexDirection: "row", alignItems: "center" }}>
-            <View style={{ width: "90%" }}>
-              <Input placeholder="Enter"/>
+          <View style={styles.MEFtYMQc}>
+            <View style={styles.EikEWkPJ}>
+              <Input placeholder="Enter" />
             </View>
-            <Image source={require("./assets/search.png")}/>
+            <Image source={require("./assets/search.png")} />
           </View>
         </View>
         <View>
@@ -34,8 +33,7 @@ const FollowersList = (params) => {
           <Follower name='Ander' bgcolor='#FCF1D6' />
         </View>
       </View>
-    </ScrollView>
-  );
+    </ScrollView>;
 };
 
 const styles = StyleSheet.create({
@@ -64,36 +62,44 @@ const styles = StyleSheet.create({
   frequentlyText: {
     marginLeft: 30,
     color: "#8F8D86"
+  },
+  MEFtYMQc: {
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: "#C4C4C4",
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  EikEWkPJ: {
+    width: "90%"
+  },
+  sKRvhpYT: {
+    backgroundColor: "props.bgcolor"
   }
-
 });
-
 export default FollowersList;
 
-const Follower = (props) => {
-  return (
-    <View style={FollowerStyles.follower}>
+const Follower = props => {
+  return <View style={FollowerStyles.follower}>
       <View style={FollowerStyles.main}>
-        <View style={[FollowerStyles.image, { backgroundColor: props.bgcolor }]}>
-          <Image source={require("./assets/edit.png")}/>
+        <View style={[FollowerStyles.image, styles.sKRvhpYT]}>
+          <Image source={require("./assets/edit.png")} />
         </View>
         <Text>{props.name}</Text>
       </View>
       {props.follow && <Text>Follow</Text>}
-    </View>
-  );
+    </View>;
 };
+
 const FollowerStyles = StyleSheet.create({
   follower: {
     marginHorizontal: 20,
-
     borderBottomWidth: 0.5,
     borderBottomColor: "rgba(0,0,0,0.5)",
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 10,
     justifyContent: "space-between"
-
   },
   main: {
     flexDirection: "row",
@@ -110,20 +116,11 @@ const FollowerStyles = StyleSheet.create({
   }
 });
 
-const Input = (props) => {
-  return (
-    <View>
-      <TextInput
-        style={textStyles.input}
-        placeholder={props.placeholder}
-        value={props.value}
-        onChangeText={(num) => props.setValue(num)}
-        placeholderTextColor='#ddd'
-        editable={props.editable !== false}
-      />
+const Input = props => {
+  return <View>
+      <TextInput style={textStyles.input} placeholder={props.placeholder} value={props.value} onChangeText={num => props.setValue(num)} placeholderTextColor='#ddd' editable={props.editable !== false} />
       {props.errorText ? <Text style={textStyles.error}>{props.errorText}</Text> : null}
-    </View>
-  );
+    </View>;
 };
 
 const textStyles = StyleSheet.create({

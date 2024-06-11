@@ -1,10 +1,8 @@
 // @ts-ignore
 import { getGlobalOptions } from "@options";
-
 const global = getGlobalOptions();
 const BASE_URL = global.url;
-
-export const sendQuery = async (data) => {
+export const sendQuery = async data => {
   try {
     const response = await fetch(`${BASE_URL}/modules/contact-us/contact_us/`, {
       method: "POST",

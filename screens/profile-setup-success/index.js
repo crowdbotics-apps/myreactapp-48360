@@ -2,8 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 
 const ProfileSetupSuccess = () => {
-  return (
-    <View style={styles.container}>
+  return <View style={styles.container}>
       <View style={styles.greenCircle}>
         <Image source={require("./assets/checkIcon.png")} style={styles.icon} />
       </View>
@@ -12,9 +11,9 @@ const ProfileSetupSuccess = () => {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
         purus sit amet luctus,
       </Text>
-    </View>
-  );
+    </View>;
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -49,5 +48,4 @@ const styles = StyleSheet.create({
     width: "90%"
   }
 });
-
 export default ProfileSetupSuccess;
