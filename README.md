@@ -65,6 +65,7 @@ This section will show any installed modules you add from the Storyboard Modules
 - [react-native-push-notifications](modules/push-notifications)
 - [react-native-social-login](modules/social-login)
 - [react-native-contact-us](modules/contact-us)
+- [react-native-splash](modules/splash)
 
 # Getting started: Frontend
 
