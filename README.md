@@ -61,6 +61,7 @@ This section will show any installed modules you add from the Storyboard Modules
 - [profile]()
 - [privacy-policy]()
 - [terms-and-conditions]()
+- [faq]()
 
 # Getting started: Frontend
 
